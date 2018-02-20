@@ -11,15 +11,16 @@ import { DishService } from '../services/dish.service';
 })
 export class MenuComponent implements OnInit {
 
-  dishes = DISHES;
+  dishes: Dish[];
 
-  selectedDish = DISHES[0];
+  selectedDish: Dish;
+
+  constructor(private dishService: DishService) { }
   
-  constructor(private dishService: DishService) {}
-
   ngOnInit() {
     this.dishes = this.dishService.getDishes();
   }
+  
   onSelect(dish: Dish) {
     this.selectedDish = dish;
   }
